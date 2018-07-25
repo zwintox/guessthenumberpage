@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>Guess the number</title>
+    <meta charset="UTF-8">
+    <link href="animate.css" rel="stylesheet">
+    <style>
+    div {
+        border: 100px solid transparent;
+        text-align: center;
+
+        width: 60%;
+        height: 60%;
+        
+        border-image:url("anonymous.jpg");
+       
+        border-image-repeat: repeat;
+        border-image-slice: 100%;
+        
+    }
+    h1{
+        font-style: italic;
+        font-size: 25px;
+        color:blueviolet
+        
+    }
+    svarsruta {
+        text-align: left;
+
+    }
+   
+
+    </style>
+
+
+</head>
+<body>
+    <div>
+            <h1 id="level"> Gissa på ett nummer mellan 1 och 10</h1>
+            <input id="svarsruta" type="text" onkeydown="getValue(this)">
+            <input type="button" onclick= "changeValue()" value="OK">
+            <br></br>
+            <img id ="dumbass">
+
+</div>
+
+   
+
+<script>
+    var randomNumber= Math.floor(Math.random() *10) +1;
+
+function changeValue(){
+    var text=document.getElementById("svarsruta").value;
+    
+    if (text==randomNumber){
+        document.getElementById("dumbass").src="Winning.png";
+        randomNumber= Math.floor(Math.random() *15) +1;
+        document.getElementById("level").innerHTML="Gissa på ett nummer mellan 1 och 15";
+    }
+    else{
+        document.getElementById("dumbass").src="Dumbass.png";
+    }
+    document.getElementById("svarsruta").value="";
+}
+function getValue(e){
+    
+    if (event.keyCode==13) {
+       
+       if(e.value==randomNumber){
+           document.getElementById("dumbass").src="Winning.png";
+           randomNumber= Math.floor(Math.random() *15) +1;
+           document.getElementById("level").innerHTML="Gissa på ett nummer mellan 1 och 15";
+       } 
+       else{
+        document.getElementById("dumbass").src="Dumbass.png";
+       }
+       document.getElementById("svarsruta").value="";
+    }
+}
+
+</script>
+</body>
+</html>
